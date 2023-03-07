@@ -15,12 +15,11 @@ export class UserService {
     if (user) throw new BadRequestException('user already exist!');
     const passwordHash = this.generatePasswordHash(dto.password);
     dto.password = await passwordHash;
-    await this.userRepository.createUser(dto);
-    return;
+    const newUser = await this.userRepository.createUser(dto);
+    return { userId: newUser.id };
   }
 
   generatePasswordHash(password: string) {
-    const passwordHash = bcrypt.hash(password, 10);
-    return passwordHash;
+    return bcrypt.hash(password, 10);
   }
 }

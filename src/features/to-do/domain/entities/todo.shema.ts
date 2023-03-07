@@ -24,8 +24,13 @@ export class ToDo {
   @Prop({
     required: true,
     type: String,
-    default: () =>
-      new Date().toLocaleString('en-US', { timeZone: 'Europe/Moscow' }),
+    default: () => {
+      const offset = -9;
+      const date = new Date(new Date().getTime() + offset * 3600 * 1000)
+        .toUTCString()
+        .replace(/ GMT$/, '');
+      return date.slice(0, date.length - 3) + ' PM';
+    },
   })
   createdAt: string;
 }

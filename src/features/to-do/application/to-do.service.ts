@@ -2,8 +2,6 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateToDoDto } from '../api/dto/create-to-do.dto';
 import { ToDoRepository } from '../infrastructure/to-do.repository';
 import { ToDoQueryRepository } from '../infrastructure/to-do.query-repository';
-import { ToDo } from '../domain/entities/todo.shema';
-import { UpdateToDoDto } from '../api/dto/update-to-do.dto';
 
 @Injectable()
 export class ToDoService {
