@@ -25,11 +25,11 @@ export class ToDo {
     required: true,
     type: String,
     default: () => {
-      const offset = -9;
+      const offset = 3;
       const date = new Date(new Date().getTime() + offset * 3600 * 1000)
         .toUTCString()
         .replace(/ GMT$/, '');
-      return date.slice(0, date.length - 3) + ' PM';
+      return date.slice(0, date.length - 3);
     },
   })
   createdAt: string;
